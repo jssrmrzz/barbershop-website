@@ -1,0 +1,92 @@
+---
+import { Calendar, MapPin, Star } from 'lucide-astro';
+---
+
+<section class="relative bg-gradient-to-br from-primary via-primary to-primary/90 text-background overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-black/10">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23d4af37" fill-opacity="0.05" fill-rule="evenodd"%3E%3Cpath d="M20 20c0 11.046-8.954 20-20 20v20h40V20H20z"/%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+  </div>
+
+  <div class="container-custom relative">
+    <div class="section-spacing">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Content Column -->
+        <div class="text-center lg:text-left">
+          <div class="flex items-center justify-center lg:justify-start mb-4">
+            <div class="flex items-center space-x-1">
+              <Star size={16} class="text-secondary fill-current" />
+              <Star size={16} class="text-secondary fill-current" />
+              <Star size={16} class="text-secondary fill-current" />
+              <Star size={16} class="text-secondary fill-current" />
+              <Star size={16} class="text-secondary fill-current" />
+            </div>
+            <span class="ml-2 text-sm text-gray-300">5.0 Rating • 500+ Reviews</span>
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Premium Cuts for the
+            <span class="text-secondary">Modern Man</span>
+          </h1>
+          
+          <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
+            Experience the art of traditional barbering with a contemporary twist. Our master barbers deliver precision cuts, classic shaves, and exceptional grooming services.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start mb-8">
+            <a href="#booking" class="btn-primary text-lg px-8 py-4 w-full sm:w-auto">
+              <Calendar size={20} class="inline mr-2" />
+              Book Appointment
+            </a>
+            <a href="#location" class="btn-secondary text-lg px-8 py-4 w-full sm:w-auto bg-transparent border-2 border-background text-background hover:bg-background hover:text-primary">
+              <MapPin size={20} class="inline mr-2" />
+              Find Us
+            </a>
+          </div>
+
+          <!-- Quick Info -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center lg:text-left">
+            <div>
+              <div class="text-2xl font-bold text-secondary">15+</div>
+              <div class="text-sm text-gray-300">Years Experience</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-secondary">3</div>
+              <div class="text-sm text-gray-300">Master Barbers</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-secondary">5K+</div>
+              <div class="text-sm text-gray-300">Happy Clients</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Column -->
+        <div class="relative">
+          <div class="relative z-10">
+            <!-- Placeholder for barbershop image -->
+            <div class="aspect-[4/5] bg-secondary/10 rounded-2xl border-4 border-secondary/20 flex items-center justify-center">
+              <div class="text-center text-secondary/60">
+                <div class="text-6xl mb-4">✂️</div>
+                <p class="text-lg font-medium">Professional Barbershop</p>
+                <p class="text-sm">Interior Photo</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative Elements -->
+          <div class="absolute -top-6 -right-6 w-24 h-24 bg-secondary/20 rounded-full blur-xl"></div>
+          <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Wave -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-12 fill-background">
+      <path d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,20 L1200,120 L0,120 Z"></path>
+    </svg>
+  </div>
+</section>

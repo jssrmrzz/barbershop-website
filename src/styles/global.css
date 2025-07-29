@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  body {
+    @apply text-text bg-background;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-primary font-bold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 inline-block text-center;
+  }
+  
+  .btn-primary {
+    @apply btn bg-secondary text-primary hover:bg-secondary-dark;
+  }
+  
+  .btn-secondary {
+    @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-background;
+  }
+  
+  .container-custom {
+    @apply max-w-container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-spacing {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+}

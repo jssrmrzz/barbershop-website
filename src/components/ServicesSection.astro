@@ -1,0 +1,95 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import { Scissors, Sparkles, Waves, PaintBrush, ArrowRight } from 'lucide-astro';
+
+export interface Props {
+  showAll?: boolean;
+  title?: string;
+}
+
+const { showAll = false, title = "Our Services" } = Astro.props;
+
+const services = [
+  {
+    title: "Classic Haircut",
+    description: "Traditional men's haircut with scissors and clipper work, includes wash and style.",
+    price: "25",
+    duration: "30 min",
+    icon: Scissors,
+    popular: false
+  },
+  {
+    title: "Modern Fade",
+    description: "Contemporary fade cuts with precise blending and modern styling techniques.",
+    price: "30",
+    duration: "45 min",
+    icon: Sparkles,
+    popular: true
+  },
+  {
+    title: "Beard Trim & Shape",
+    description: "Professional beard trimming, shaping, and conditioning treatment.",
+    price: "15",
+    duration: "20 min",
+    icon: Waves,
+    popular: false
+  },
+  {
+    title: "Hot Towel Shave",
+    description: "Traditional straight razor shave with hot towel treatment and aftercare.",
+    price: "35",
+    duration: "50 min",
+    icon: PaintBrush,
+    popular: false
+  }
+];
+
+const displayServices = showAll ? services : services.slice(0, 3);
+---
+
+<section class="section-spacing bg-background-off">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        {title}
+      </h2>
+      <p class="text-lg text-text-light max-w-2xl mx-auto">
+        Experience premium barbering services crafted by skilled professionals who care about your style and satisfaction.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+      {displayServices.map((service) => (
+        <ServiceCard
+          title={service.title}
+          description={service.description}
+          price={service.price}
+          duration={service.duration}
+          icon={service.icon}
+          popular={service.popular}
+        />
+      ))}
+    </div>
+
+    {!showAll && (
+      <div class="text-center">
+        <a href="/services" class="inline-flex items-center justify-center btn-secondary text-lg px-8 py-4">
+          View All Services
+          <ArrowRight size={20} class="ml-2" />
+        </a>
+      </div>
+    )}
+
+    {showAll && (
+      <div class="mt-12 p-8 bg-primary rounded-2xl text-center">
+        <h3 class="text-2xl font-bold text-secondary mb-4">Ready for Your Perfect Cut?</h3>
+        <p class="text-gray-300 mb-6 max-w-md mx-auto">
+          Book your appointment today and experience the difference our expert barbers can make.
+        </p>
+        <a href="#booking" class="btn-primary text-lg px-8 py-4">
+          Book Appointment Now
+        </a>
+      </div>
+    )}
+  </div>
+</section>

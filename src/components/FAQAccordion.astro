@@ -1,0 +1,160 @@
+---
+import { ChevronDown, HelpCircle } from 'lucide-astro';
+
+const faqs = [
+  {
+    id: "faq-1",
+    question: "Do you accept walk-ins?",
+    answer: "Yes, we welcome walk-ins! However, we recommend booking an appointment to guarantee your preferred time slot and avoid waiting. Peak hours (evenings and weekends) tend to be busier."
+  },
+  {
+    id: "faq-2",
+    question: "What payment methods do you accept?",
+    answer: "We accept cash, all major credit cards (Visa, Mastercard, American Express), debit cards, and mobile payments including Apple Pay and Google Pay."
+  },
+  {
+    id: "faq-3",
+    question: "How far in advance should I book?",
+    answer: "We recommend booking 1-2 weeks in advance, especially for weekend appointments. For weekday appointments, you can usually book just a few days ahead."
+  },
+  {
+    id: "faq-4",
+    question: "Is parking available?",
+    answer: "Yes, we have dedicated parking spaces in front of the shop and additional street parking nearby. There's also a public parking garage just two blocks away."
+  },
+  {
+    id: "faq-5",
+    question: "What's your cancellation policy?",
+    answer: "Please give us at least 24 hours notice if you need to cancel or reschedule your appointment. This helps us accommodate other clients who may be waiting for an opening."
+  },
+  {
+    id: "faq-6",
+    question: "Do you provide beard care products?",
+    answer: "Yes, we carry a selection of premium beard oils, balms, and grooming products. Our barbers can recommend the best products for your specific beard type and needs."
+  },
+  {
+    id: "faq-7",
+    question: "How long does each service typically take?",
+    answer: "A standard haircut takes about 30 minutes, fades take 45 minutes, beard trims are 20 minutes, and hot towel shaves take approximately 50 minutes. Times may vary based on hair type and desired style."
+  },
+  {
+    id: "faq-8",
+    question: "Do you offer services for special occasions?",
+    answer: "Absolutely! We provide grooming services for weddings, job interviews, dates, and other special events. Contact us in advance to discuss your specific needs and schedule."
+  }
+];
+---
+
+<section class="section-spacing bg-background-off">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center mb-4">
+        <HelpCircle size={32} class="text-secondary mr-3" />
+        <h2 class="text-3xl md:text-4xl font-bold text-primary">
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <p class="text-lg text-text-light max-w-2xl mx-auto">
+        Got questions? We've got answers. Here are the most common questions our customers ask.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="bg-background rounded-lg shadow-sm border border-neutral overflow-hidden">
+          <button 
+            class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between hover:bg-neutral-light transition-colors focus:outline-none focus:ring-2 focus:ring-secondary/20"
+            data-target={faq.id}
+            aria-expanded="false"
+            aria-controls={faq.id}
+          >
+            <span class="font-semibold text-primary pr-4">{faq.question}</span>
+            <ChevronDown size={20} class="text-secondary transform transition-transform duration-200 flex-shrink-0" />
+          </button>
+          
+          <div 
+            id={faq.id}
+            class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+            aria-hidden="true"
+          >
+            <div class="px-6 pb-5 text-text-light leading-relaxed">
+              {faq.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="text-center mt-12">
+      <div class="bg-primary rounded-xl p-8 max-w-2xl mx-auto">
+        <h3 class="text-2xl font-bold text-secondary mb-4">Still Have Questions?</h3>
+        <p class="text-gray-300 mb-6">
+          Can't find what you're looking for? Our friendly staff is here to help with any questions you might have.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+1-555-CUTS-NOW" class="btn-primary">
+            Call Us Now
+          </a>
+          <a href="/contact" class="btn-secondary bg-transparent border-2 border-background text-background hover:bg-background hover:text-primary">
+            Contact Page
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggles = document.querySelectorAll('.faq-toggle');
+    
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const targetId = toggle.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        const chevron = toggle.querySelector('svg');
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        
+        if (content && chevron) {
+          // Close all other FAQs
+          toggles.forEach(otherToggle => {
+            if (otherToggle !== toggle) {
+              const otherTargetId = otherToggle.getAttribute('data-target');
+              const otherContent = document.getElementById(otherTargetId);
+              const otherChevron = otherToggle.querySelector('svg');
+              
+              if (otherContent && otherChevron) {
+                otherContent.style.maxHeight = '0px';
+                otherContent.setAttribute('aria-hidden', 'true');
+                otherToggle.setAttribute('aria-expanded', 'false');
+                otherChevron.style.transform = 'rotate(0deg)';
+              }
+            }
+          });
+          
+          // Toggle current FAQ
+          if (isExpanded) {
+            content.style.maxHeight = '0px';
+            content.setAttribute('aria-hidden', 'true');
+            toggle.setAttribute('aria-expanded', 'false');
+            chevron.style.transform = 'rotate(0deg)';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.setAttribute('aria-hidden', 'false');
+            toggle.setAttribute('aria-expanded', 'true');
+            chevron.style.transform = 'rotate(180deg)';
+          }
+        }
+      });
+      
+      // Keyboard accessibility
+      toggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle.click();
+        }
+      });
+    });
+  });
+</script>

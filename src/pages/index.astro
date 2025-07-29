@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from '../components/Hero.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import HoursLocationSection from '../components/HoursLocationSection.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+  title="Elite Cuts Barbershop - Premium Men's Grooming"
+  description="Experience premium barbering services in downtown. Professional haircuts, fades, beard trims, and hot towel shaves by master barbers. Book your appointment today!"
+>
+  <Hero />
+  <ServicesSection />
+  <AboutSection />
+  <TestimonialsSection />
+  <HoursLocationSection />
+  <FAQAccordion />
 </Layout>

@@ -1,0 +1,106 @@
+---
+import { Clock, MapPin, Phone, Navigation } from 'lucide-astro';
+---
+
+<section class="section-spacing bg-primary text-background">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">
+        Visit Us Today
+      </h2>
+      <p class="text-gray-300 max-w-2xl mx-auto">
+        Located in the heart of downtown, we're easy to find and always ready to serve you.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Hours -->
+      <div class="bg-black/20 rounded-2xl p-8">
+        <div class="flex items-center mb-6">
+          <div class="bg-secondary/20 rounded-full p-3 mr-4">
+            <Clock size={24} class="text-secondary" />
+          </div>
+          <h3 class="text-2xl font-bold text-secondary">Hours of Operation</h3>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex justify-between items-center py-2 border-b border-gray-600">
+            <span class="font-medium">Monday - Friday</span>
+            <span class="text-secondary">9:00 AM - 7:00 PM</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-gray-600">
+            <span class="font-medium">Saturday</span>
+            <span class="text-secondary">8:00 AM - 6:00 PM</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-gray-600">
+            <span class="font-medium">Sunday</span>
+            <span class="text-secondary">10:00 AM - 4:00 PM</span>
+          </div>
+        </div>
+
+        <div class="mt-8 p-4 bg-secondary/10 rounded-lg">
+          <p class="text-sm text-gray-300 mb-2">
+            <strong class="text-secondary">Walk-ins welcome!</strong> 
+            But appointments are recommended for guaranteed service.
+          </p>
+        </div>
+      </div>
+
+      <!-- Location & Contact -->
+      <div class="bg-black/20 rounded-2xl p-8">
+        <div class="flex items-center mb-6">
+          <div class="bg-secondary/20 rounded-full p-3 mr-4">
+            <MapPin size={24} class="text-secondary" />
+          </div>
+          <h3 class="text-2xl font-bold text-secondary">Location & Contact</h3>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Address -->
+          <div class="flex items-start space-x-3">
+            <MapPin size={20} class="text-secondary mt-1 flex-shrink-0" />
+            <div>
+              <div class="font-medium">123 Main Street</div>
+              <div class="text-gray-300">Downtown, CA 12345</div>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex items-center space-x-3">
+            <Phone size={20} class="text-secondary flex-shrink-0" />
+            <a href="tel:+1-555-CUTS-NOW" class="font-medium hover:text-secondary transition-colors">
+              (555) CUTS-NOW
+            </a>
+          </div>
+
+          <!-- Directions -->
+          <div class="flex items-center space-x-3">
+            <Navigation size={20} class="text-secondary flex-shrink-0" />
+            <a href="https://maps.google.com" target="_blank" class="font-medium hover:text-secondary transition-colors">
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <!-- Map Placeholder -->
+        <div class="mt-8 aspect-[16/10] bg-gray-600 rounded-lg flex items-center justify-center">
+          <div class="text-center text-gray-400">
+            <MapPin size={48} class="mx-auto mb-2" />
+            <p class="font-medium">Interactive Map</p>
+            <p class="text-sm">Google Maps Embed</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="#booking" class="btn-primary flex-1 text-center">
+            Book Appointment
+          </a>
+          <a href="tel:+1-555-CUTS-NOW" class="btn-secondary bg-transparent border-2 border-background text-background hover:bg-background hover:text-primary flex-1 text-center">
+            Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

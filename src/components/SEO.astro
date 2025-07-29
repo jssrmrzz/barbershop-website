@@ -1,0 +1,134 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  twitterCard?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url,
+  ogImage = "/images/og-default.jpg",
+  ogType = "website",
+  twitterCard = "summary_large_image"
+} = Astro.props;
+
+const siteTitle = "Elite Cuts Barbershop";
+const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
+---
+
+<!-- Primary Meta Tags -->
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<meta name="keywords" content="barbershop, haircut, men's grooming, fade, beard trim, styling, local barber" />
+<meta name="author" content="Elite Cuts Barbershop" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(ogImage, Astro.url)} />
+<meta property="og:site_name" content={siteTitle} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content={twitterCard} />
+<meta property="twitter:url" content={canonical} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+
+<!-- Local Business Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Elite Cuts Barbershop",
+  "image": [
+    "{new URL('/images/shop-exterior.jpg', Astro.url)}",
+    "{new URL('/images/shop-interior.jpg', Astro.url)}"
+  ],
+  "description": "Professional barbershop offering quality haircuts, fades, beard trims, and men's grooming services in the heart of downtown.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main Street",
+    "addressLocality": "Downtown",
+    "addressRegion": "CA",
+    "postalCode": "12345",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.7589,
+    "longitude": -73.9851
+  },
+  "url": "{Astro.url}",
+  "telephone": "+1-555-CUTS-NOW",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "10:00",
+      "closes": "16:00"
+    }
+  ],
+  "priceRange": "$$",
+  "servedCuisine": [],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Barbershop Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Men's Haircut",
+          "description": "Professional men's haircut and styling"
+        },
+        "price": "25",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Fade Cut",
+          "description": "Modern fade haircut with precision styling"
+        },
+        "price": "30",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Beard Trim",
+          "description": "Professional beard trimming and shaping"
+        },
+        "price": "15",
+        "priceCurrency": "USD"
+      }
+    ]
+  }
+}
+</script>

@@ -1,0 +1,101 @@
+---
+import { Menu, X, Phone, MapPin } from 'lucide-astro';
+---
+
+<header class="bg-background shadow-sm sticky top-0 z-50">
+  <div class="container-custom">
+    <div class="flex items-center justify-between py-4">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="text-2xl font-bold text-primary hover:text-secondary transition-colors">
+          Elite Cuts
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-text hover:text-primary transition-colors font-medium">Home</a>
+        <a href="/services" class="text-text hover:text-primary transition-colors font-medium">Services</a>
+        <a href="/contact" class="text-text hover:text-primary transition-colors font-medium">Contact</a>
+      </nav>
+
+      <!-- Desktop Contact Info -->
+      <div class="hidden lg:flex items-center space-x-6">
+        <a href="tel:+1-555-CUTS-NOW" class="flex items-center space-x-2 text-text hover:text-secondary transition-colors">
+          <Phone size={16} />
+          <span class="text-sm font-medium">(555) CUTS-NOW</span>
+        </a>
+        <a href="#location" class="flex items-center space-x-2 text-text hover:text-secondary transition-colors">
+          <MapPin size={16} />
+          <span class="text-sm">123 Main St</span>
+        </a>
+      </div>
+
+      <!-- Book Now Button -->
+      <div class="hidden md:block">
+        <a href="#booking" class="btn-primary">
+          Book Now
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden p-2 text-primary hover:text-secondary transition-colors" aria-label="Toggle menu">
+        <Menu id="menu-icon" size={24} />
+        <X id="close-icon" size={24} class="hidden" />
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="md:hidden hidden pb-4">
+      <div class="flex flex-col space-y-4">
+        <a href="/" class="text-text hover:text-primary transition-colors font-medium py-2">Home</a>
+        <a href="/services" class="text-text hover:text-primary transition-colors font-medium py-2">Services</a>
+        <a href="/contact" class="text-text hover:text-primary transition-colors font-medium py-2">Contact</a>
+        
+        <!-- Mobile Contact Info -->
+        <div class="pt-4 border-t border-neutral space-y-3">
+          <a href="tel:+1-555-CUTS-NOW" class="flex items-center space-x-2 text-text hover:text-secondary transition-colors">
+            <Phone size={16} />
+            <span class="font-medium">(555) CUTS-NOW</span>
+          </a>
+          <a href="#location" class="flex items-center space-x-2 text-text hover:text-secondary transition-colors">
+            <MapPin size={16} />
+            <span>123 Main Street, Downtown</span>
+          </a>
+        </div>
+        
+        <!-- Mobile Book Now -->
+        <div class="pt-4">
+          <a href="#booking" class="btn-primary block text-center">
+            Book Now
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>

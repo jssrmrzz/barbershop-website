@@ -1,0 +1,57 @@
+---
+import { Calendar } from 'lucide-astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  price: string;
+  duration?: string;
+  icon: any;
+  popular?: boolean;
+}
+
+const { title, description, price, duration = "30 min", icon: Icon, popular = false } = Astro.props;
+---
+
+<div class={`relative bg-background rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border ${popular ? 'border-secondary ring-2 ring-secondary/20' : 'border-neutral hover:border-secondary/30'} group`}>
+  {popular && (
+    <div class="absolute -top-3 left-6">
+      <span class="bg-secondary text-primary px-3 py-1 rounded-full text-sm font-semibold">
+        Most Popular
+      </span>
+    </div>
+  )}
+
+  <div class="flex items-start justify-between mb-4">
+    <div class={`p-3 rounded-lg ${popular ? 'bg-secondary/10' : 'bg-neutral-light group-hover:bg-secondary/10'} transition-colors`}>
+      <Icon size={24} class={`${popular ? 'text-secondary' : 'text-primary group-hover:text-secondary'} transition-colors`} />
+    </div>
+    <div class="text-right">
+      <div class="text-2xl font-bold text-primary">${price}</div>
+      <div class="text-sm text-text-light">{duration}</div>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary mb-2 group-hover:text-secondary transition-colors">
+    {title}
+  </h3>
+
+  <p class="text-text-light mb-6 leading-relaxed">
+    {description}
+  </p>
+
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-2 text-sm text-text-light">
+      <Calendar size={16} />
+      <span>Book Online</span>
+    </div>
+    
+    <button class={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+      popular 
+        ? 'bg-secondary text-primary hover:bg-secondary-dark' 
+        : 'bg-primary text-background hover:bg-primary/90'
+    }`}>
+      Book Now
+    </button>
+  </div>
+</div>

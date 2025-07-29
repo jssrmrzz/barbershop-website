@@ -1,0 +1,56 @@
+---
+import { Star, Quote } from 'lucide-astro';
+
+export interface Props {
+  name: string;
+  review: string;
+  rating?: number;
+  service?: string;
+  avatar?: string;
+}
+
+const { name, review, rating = 5, service, avatar } = Astro.props;
+
+// Generate stars based on rating
+const stars = Array(5).fill(0).map((_, i) => i < rating);
+---
+
+<div class="bg-background rounded-xl shadow-lg p-6 border border-neutral hover:shadow-xl transition-all duration-300 relative">
+  <!-- Quote Icon -->
+  <div class="absolute top-4 right-4 text-secondary/20">
+    <Quote size={32} />
+  </div>
+
+  <!-- Rating -->
+  <div class="flex items-center mb-4">
+    <div class="flex items-center space-x-1">
+      {stars.map((filled) => (
+        <Star size={16} class={`${filled ? 'text-secondary fill-current' : 'text-gray-300'} transition-colors`} />
+      ))}
+    </div>
+    <span class="ml-2 text-sm text-text-light font-medium">{rating}.0</span>
+  </div>
+
+  <!-- Review Text -->
+  <blockquote class="text-text leading-relaxed mb-6">
+    "{review}"
+  </blockquote>
+
+  <!-- Customer Info -->
+  <div class="flex items-center">
+    <div class={`w-12 h-12 rounded-full flex items-center justify-center text-background font-semibold text-lg ${avatar ? '' : 'bg-gradient-to-br from-secondary to-secondary-dark'}`}>
+      {avatar ? (
+        <img src={avatar} alt={name} class="w-full h-full rounded-full object-cover" />
+      ) : (
+        name.split(' ').map(n => n[0]).join('')
+      )}
+    </div>
+    
+    <div class="ml-4">
+      <div class="font-semibold text-primary">{name}</div>
+      {service && (
+        <div class="text-sm text-text-light">{service}</div>
+      )}
+    </div>
+  </div>
+</div>

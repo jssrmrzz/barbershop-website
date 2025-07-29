@@ -1,0 +1,69 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+
+const testimonials = [
+  {
+    name: "Marcus Johnson",
+    review: "Best barbershop in town! The attention to detail is incredible and the atmosphere is perfect. I've been coming here for 2 years and never disappointed.",
+    rating: 5,
+    service: "Regular Customer"
+  },
+  {
+    name: "David Chen",
+    review: "Amazing fade work and the barbers really know what they're doing. Professional service, great prices, and they make you look and feel your best.",
+    rating: 5,
+    service: "Fade Specialist"
+  },
+  {
+    name: "Robert Williams",
+    review: "The hot towel shave experience is unmatched. Traditional barbering at its finest with modern comfort. Highly recommend to anyone looking for quality.",
+    rating: 5,
+    service: "Hot Towel Shave"
+  },
+  {
+    name: "Alex Thompson",
+    review: "Great barbershop with skilled professionals. Clean, comfortable environment and they really listen to what you want. Will definitely be back!",
+    rating: 5,
+    service: "First Time Customer"
+  }
+];
+---
+
+<section class="section-spacing bg-background">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        What Our Clients Say
+      </h2>
+      <p class="text-lg text-text-light max-w-2xl mx-auto">
+        Don't just take our word for it. Here's what our satisfied customers have to say about their experience at Elite Cuts.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+      {testimonials.map((testimonial) => (
+        <TestimonialCard
+          name={testimonial.name}
+          review={testimonial.review}
+          rating={testimonial.rating}
+          service={testimonial.service}
+        />
+      ))}
+    </div>
+
+    <!-- Google Reviews CTA -->
+    <div class="text-center">
+      <div class="inline-flex items-center space-x-4 bg-neutral-light rounded-xl p-6">
+        <div class="flex items-center space-x-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6" />
+          <span class="font-semibold text-primary">Google Reviews</span>
+        </div>
+        <div class="text-2xl font-bold text-secondary">4.9/5</div>
+        <div class="text-text-light">Based on 500+ reviews</div>
+        <a href="#" class="btn-secondary px-6 py-2 text-sm">
+          Read More Reviews
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

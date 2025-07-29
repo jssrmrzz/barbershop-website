@@ -1,0 +1,73 @@
+---
+import { Award, Users, Clock, Scissors } from 'lucide-astro';
+---
+
+<section class="section-spacing bg-background">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Content -->
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          About Elite Cuts
+        </h2>
+        <p class="text-lg text-text-light mb-6 leading-relaxed">
+          For over 15 years, Elite Cuts has been the premier destination for men's grooming in downtown. Our master barbers combine time-honored techniques with modern styling to deliver exceptional results every time.
+        </p>
+        <p class="text-text-light mb-8 leading-relaxed">
+          We believe that a great haircut is more than just a service—it's an experience. From the moment you walk through our doors, you'll enjoy our professional atmosphere, attention to detail, and commitment to making you look and feel your absolute best.
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div class="text-center">
+            <div class="bg-secondary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+              <Award size={24} class="text-secondary" />
+            </div>
+            <div class="text-2xl font-bold text-primary">15+</div>
+            <div class="text-sm text-text-light">Years</div>
+          </div>
+          <div class="text-center">
+            <div class="bg-secondary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+              <Users size={24} class="text-secondary" />
+            </div>
+            <div class="text-2xl font-bold text-primary">5K+</div>
+            <div class="text-sm text-text-light">Clients</div>
+          </div>
+          <div class="text-center">
+            <div class="bg-secondary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+              <Scissors size={24} class="text-secondary" />
+            </div>
+            <div class="text-2xl font-bold text-primary">3</div>
+            <div class="text-sm text-text-light">Barbers</div>
+          </div>
+          <div class="text-center">
+            <div class="bg-secondary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+              <Clock size={24} class="text-secondary" />
+            </div>
+            <div class="text-2xl font-bold text-primary">6</div>
+            <div class="text-sm text-text-light">Days</div>
+          </div>
+        </div>
+
+        <a href="/contact" class="btn-secondary">
+          Learn More About Us
+        </a>
+      </div>
+
+      <!-- Image -->
+      <div class="relative">
+        <div class="aspect-[4/5] bg-secondary/10 rounded-2xl border-4 border-secondary/20 flex items-center justify-center">
+          <div class="text-center text-secondary/60">
+            <div class="text-6xl mb-4">👥</div>
+            <p class="text-lg font-medium">Our Team</p>
+            <p class="text-sm">Professional Barbers</p>
+          </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute -top-4 -left-4 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/10 rounded-full blur-xl"></div>
+      </div>
+    </div>
+  </div>
+</section>
